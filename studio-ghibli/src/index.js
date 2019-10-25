@@ -3,13 +3,16 @@ import ReactDOM from 'react-dom';
 import './index.css';
 import App from './App';
 import { Provider } from 'react-redux';
-import { createStore, applyMiddleware } from 'redux';
+import { createStore, applyMiddleware, combineReducers } from 'redux';
 import thunk from 'redux-thunk';
 import logger from 'redux-logger';
-import { reducer } from './reducers/films';
+import { reducer as filmsReducer } from './reducers/films';
 import * as serviceWorker from './serviceWorker';
 
-const store = createStore(reducer, applyMiddleware(thunk, logger));
+const rootReducer = combineReducers({
+  films: filmsReducer
+});
+const store = createStore(rootReducer, applyMiddleware(thunk, logger));
 
 ReactDOM.render(
   <Provider store={store}>
