@@ -6,7 +6,7 @@ function App() {
   return (
     <>
       <CssBaseline />
-      <div className='App'>
+      <div className='App bg-sky'>
         <h1>Studio Ghibli</h1>
       </div>
     </>
