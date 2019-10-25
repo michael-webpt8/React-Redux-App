@@ -1,8 +1,16 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import CssBaseline from '@material-ui/core/CssBaseline';
 import './App.scss';
 
-function App() {
+import { connect } from 'react-redux';
+import { fetchFilms } from './actions/films';
+
+function App(props) {
+  const { fetchFilms } = props;
+  useEffect(() => {
+    fetchFilms();
+  }, [fetchFilms]);
+
   return (
     <>
       <CssBaseline />
@@ -13,4 +21,19 @@ function App() {
   );
 }
 
-export default App;
+const mapStateToProps = state => {
+  return {
+    isLoading: state.isLoading,
+    films: state.films,
+    error: state.error
+  };
+};
+
+const mapDispatchToProps = {
+  fetchFilms
+};
+
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(App);
