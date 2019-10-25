@@ -5,7 +5,7 @@ import './App.scss';
 import useMediaQuery from '@material-ui/core/useMediaQuery';
 import { connect } from 'react-redux';
 import { fetchFilms } from './actions/films';
-import FilmCard from './FilmCard';
+import FilmDisplay from './FilmDisplay';
 
 function App(props) {
   const { fetchFilms } = props;
@@ -24,7 +24,7 @@ function App(props) {
         {props.isLoading ? (
           <CircularProgress color='secondary' />
         ) : (
-          props.films.map(film => <FilmCard film={film} key={film.id} />)
+          <FilmDisplay films={props.films} />
         )}
       </div>
     </>
