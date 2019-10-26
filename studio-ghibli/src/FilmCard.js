@@ -82,5 +82,5 @@ const FadeDisplay = styled(Fade)`
   border-radius: 7px;
   margin: 0 auto;
   padding: 15px;
-  margin-top: 25px;
+  margin-top: 25px;S
 `;
